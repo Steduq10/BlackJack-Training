@@ -40,9 +40,9 @@ const deckValues = [];
 
 // ♠ objects
 
-let A1p = new Cards("A♠", 1);
-deck.push(A1p._card);
-deckValues.push(A1p._value);
+//let A1p = new Cards("A♠", 1);
+//deck.push(A1p._card);
+//eckValues.push(A1p._value);
 
 let A11p = new Cards("A♠", 11);
 deck.push(A11p._card);
@@ -99,9 +99,9 @@ deckValues.push(NKp._value);
 
 // ♥ objects   
 
-let A1c = new Cards("A♥", 1);
-deck.push(A1c._card);
-deckValues.push(A1c._value);
+//let A1c = new Cards("A♥", 1);
+//deck.push(A1c._card);
+//deckValues.push(A1c._value);
 
 let A11c = new Cards("A♥", 11);
 deck.push(A11c._card);
@@ -160,9 +160,9 @@ deckValues.push(NKc._value);
 // ♣ objects
 
 
-let A1t = new Cards("A♣", 1);
-deck.push(A1t._card);
-deckValues.push(A1t._value);
+//let A1t = new Cards("A♣", 1);
+//deck.push(A1t._card);
+//deckValues.push(A1t._value);
 
 let A11t = new Cards("A♣", 11);
 deck.push(A11t._card);
@@ -218,9 +218,9 @@ deckValues.push(NKt._value);
 
 // ♦ objects
 
-let A1d = new Cards("A♦", 1);
-deck.push(A1d._card);
-deckValues.push(A1d._value);
+//let A1d = new Cards("A♦", 1);
+//deck.push(A1d._card);
+//deckValues.push(A1d._value);
 
 let A11d = new Cards("A♦", 11);
 deck.push(A11d._card);
@@ -309,7 +309,7 @@ function startGame(){
         
         console.log("Cards: "+ selectedCards);
         sumCards(selectedCardsValue);
-        //console.log("Sum: "+ sumCards(selectedCardsValue));
+        //playingGame(sum);
 
   }
 
@@ -320,10 +320,43 @@ function startGame(){
     sum += selectedCardsValue[i];
     }
     console.log("Sum: " + sum);
+    playingGame(sum);
   }
+
+  function playingGame(sum){
+    console.log(sum);
+    if(sum<21){
+      //console.log("Do you want to draw a card? (Y/N)"); //Input
+      drawCard();
+  }
+}
+
+function drawCard(){
+    const readline = require('readline');
+      let interfazCaptura = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      })
+      interfazCaptura.question("Do you want to draw a card? (Y/N): ", function(answer){
+        //console.log("Answer: " + answer);
+        switch(answer){
+            case "Y" || "y":
+                console.log("Draw the card...");
+                break;
+            case "N" || "n":
+                console.log("Game over");
+                break;
+                default:
+                    console.log("Invalid input. ");
+                    break;
+          }
+
+        interfazCaptura.close();
+      });
+  }
+  
 
 console.log("Blackjack");
 console.log("Feeling with luck? - Give it a try~~");
 startGame();
-//sumCards();
 
