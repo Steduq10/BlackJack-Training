@@ -29,3 +29,75 @@ CONSIDERATIONS ----
 1. The default player is player1.
 2. After selecting randomly the 2 first cards, the A card takes as value 1.
 3. Ask player if he wants to continue playing in order to increase his/her award
+
+
+
+EXAMPLE 1 ------------------------------------------------------------------
+
+*****************************************
+               Blackjack
+*****************************************
+
+Feeling with luck? - Give it a try~~
+
+*****************************************
+Welcome Player1.
+Let's started!
+*****************************************
+Cards: 8♥,7♥
+
+Sum: 15
+
+Cards: 8♥,7♥,9♣
+
+Sum: 24
+You lose. GAME OVER
+Thanks for playing. You won: 0 USD
+Do you want to play again?:
+1. Play again
+2. Exit
+
+
+
+EXAMPLE 2  -------------------------------------------------------------------------
+
+*****************************************
+               Blackjack
+*****************************************
+
+Feeling with luck? - Give it a try~~
+
+*****************************************
+Welcome Player1.
+Let's started!
+*****************************************
+Cards: 9♥,4♣
+
+Sum: 13
+
+Cards: 9♥,4♣,2♣
+
+Sum: 15
+
+Cards: 9♥,4♣,2♣,4♦
+
+Sum: 19
+¡BlackJack!
+Congratulations, you won: 1000 USD
+Do you want to play again?:
+1. Play again
+2. Exit
+1
+Cards: 3♣,6♠
+
+Sum: 9
+
+Cards: 3♣,6♠,6♦
+
+Sum: 15
+
+Cards: 3♣,6♠,6♦,3♠
+
+Sum: 18
+¡BlackJack!
+Congratulations, you won: 2000 USD
