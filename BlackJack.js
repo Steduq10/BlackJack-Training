@@ -353,17 +353,18 @@ function startGame(){
 
   
   function playingGame(sum){
-    console.log(sum);
+    //console.log(sum);
     if(sum<18){
       newCard();
       //drawCard();
     }
     else if(sum >= 18 && sum <= 21 ){
         console.log("¡BlackJack!");
-        player._award += 1000;
-        console.log("Congratulations, you won: " + player._award + "USD");
+        player._award += 1000; 
+        console.log("Congratulations, you won: " + player._award + " USD");
     }else{
         console.log("You lose. GAME OVER");
+        console.log("Thanks for playing. You won: " + player._award + " USD");
     }
   }
 
@@ -399,6 +400,10 @@ function drawCard(){
         
   
         selectedCards.push(newCard);
+
+        if (selectedCardsValue == 11){
+            selectedCardsValue == 1;
+        }
         
         selectedCardsValue.push(newCardValue);
             
@@ -479,16 +484,16 @@ process.stdout.write("Do you want to play again?: \n" + "1. Play again\n" + "2. 
 
 process.stdin.on("data", function(data){
     answer = data.toString().trim();
-    switch(answer){
-        case 1: 
-        let selectedCards = [];
-        let selectedCardsValue = [];
+    if(answer == 1){
+        
+        selectedCards.length = 0;
+        selectedCardsValue.length = 0;
         //let sum = 0;
         startGame();
-        case 2:
-            console.log("Thanks for playing. You won: " + player._award + "USD");
+    } else {
+        console.log("Thanks for playing. You won: " + player._award + " USD");
+        process.exit();
     }
-    process.exit();
         
 });
 
