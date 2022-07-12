@@ -22,16 +22,38 @@ class Cards{
     set value (value){
         this._value = value;
     }
-    nameCard(){
-        return this._card; 
-    }
-
-    toString(){
-        return this.nameCard();
-   
-    }
+    
 
 }
+
+class Player {
+
+    constructor(name, award){
+        this.name = name;
+        this.award = award;
+        
+    }
+
+    get name(){
+        return this._name;
+    }
+
+    set name(name){
+        this._name = name;
+    }
+    
+    get award(){
+        return this._award;
+    }
+
+    set award(award){
+        this._award = award;
+    
+    }
+    
+}
+
+
 
 
 
@@ -285,12 +307,13 @@ for (let i=0; i < deckValues.length; i++){
 let selectedCards = [];
 let selectedCardsValue = [];
 
+const i_firstCard=Math.floor(Math.random() * deck.length);
+const i_secondCard=Math.floor(Math.random() * deck.length);
 
 function startGame(){
     //TO DO: Add the first 2 cards randomly to the user
     //Math.random() - 0 - cards.length
-    const i_firstCard=Math.floor(Math.random() * deck.length);
-    const i_secondCard=Math.floor(Math.random() * deck.length);
+    
     while(i_firstCard == i_secondCard){
         const i_secondCard=Math.floor(Math.random() * deck.length);
     }
@@ -311,6 +334,9 @@ function startGame(){
         sumCards(selectedCardsValue);
         //playingGame(sum);
 
+        
+
+
   }
 
   function sumCards(selectedCardsValue){
@@ -325,11 +351,17 @@ function startGame(){
 
   function playingGame(sum){
     console.log(sum);
-    if(sum<21){
+    if(sum<18){
       //console.log("Do you want to draw a card? (Y/N)"); //Input
       drawCard();
+    }
+    else if(sum >= 18 && sum <= 21 ){
+        console.log("¡BlackJack!");
+    }else{
+        console.log("You lose. GAME OVER");
+    }
   }
-}
+
 
 function drawCard(){
     const readline = require('readline');
@@ -341,7 +373,9 @@ function drawCard(){
         //console.log("Answer: " + answer);
         switch(answer){
             case "Y" || "y":
-                console.log("Draw the card...");
+                console.log("Drawing the card...");
+                //newCard(i_firstCard, i_secondCard);
+                newCard();
                 break;
             case "N" || "n":
                 console.log("Game over");
@@ -354,9 +388,50 @@ function drawCard(){
         interfazCaptura.close();
       });
   }
-  
 
-console.log("Blackjack");
+    function newCard (){
+        const i_newCard=Math.floor(Math.random() * deck.length);
+    while(i_firstCard == i_secondCard || i_newCard == i_secondCard || i_newCard == i_firstCard){
+        const i_newCard=Math.floor(Math.random() * deck.length);
+    }
+        const newCard=deck[i_newCard];
+
+        const newCardValue = deckValues[i_newCard];
+        
+  
+        selectedCards.push(newCard);
+        
+        selectedCardsValue.push(newCardValue);
+       
+
+        
+        
+        console.log("Cards: "+ selectedCards);
+        sumCards(selectedCardsValue);
+        drawCard();
+    }
+
+
+
+
+  
+console.log("*****************************************");
+console.log("               Blackjack                 ");
+console.log("*****************************************");
+console.log("");
 console.log("Feeling with luck? - Give it a try~~");
-startGame();
+console.log("");
+
+var readline = require('readline');
+var rl = readline.createInterface(
+    process.stdin, process.stdout);
+    rl.question('What is your name? ', (name) => {
+        console.log('Welcome: ' + name);
+        let award = 0;
+        let player = new Player(name,award);
+        startGame();
+    });
+    
+      
+
 
