@@ -31,6 +31,7 @@ class Player {
     constructor(name, award){
         this.name = name;
         this.award = award;
+        //award = 0;
         
     }
 
@@ -347,16 +348,20 @@ function startGame(){
     }
     console.log("Sum: " + sum);
     playingGame(sum);
+    return sum;
   }
 
+  
   function playingGame(sum){
     console.log(sum);
     if(sum<18){
-      //console.log("Do you want to draw a card? (Y/N)"); //Input
-      drawCard();
+      newCard();
+      //drawCard();
     }
     else if(sum >= 18 && sum <= 21 ){
         console.log("¡BlackJack!");
+        player._award += 1000;
+        console.log("Congratulations, you won: " + player._award + "USD");
     }else{
         console.log("You lose. GAME OVER");
     }
@@ -364,13 +369,7 @@ function startGame(){
 
 
 function drawCard(){
-    const readline = require('readline');
-      let interfazCaptura = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-      })
-      interfazCaptura.question("Do you want to draw a card? (Y/N): ", function(answer){
-        //console.log("Answer: " + answer);
+
         switch(answer){
             case "Y" || "y":
                 console.log("Drawing the card...");
@@ -386,8 +385,8 @@ function drawCard(){
           }
 
         interfazCaptura.close();
-      });
-  }
+      }
+  
 
     function newCard (){
         const i_newCard=Math.floor(Math.random() * deck.length);
@@ -402,16 +401,14 @@ function drawCard(){
         selectedCards.push(newCard);
         
         selectedCardsValue.push(newCardValue);
-       
-
-        
-        
+            
         console.log("Cards: "+ selectedCards);
         sumCards(selectedCardsValue);
-        drawCard();
+        //drawCard();
+        
     }
 
-
+    
 
 
   
@@ -420,8 +417,47 @@ console.log("               Blackjack                 ");
 console.log("*****************************************");
 console.log("");
 console.log("Feeling with luck? - Give it a try~~");
-console.log("");
+console.log("Welcome Player1.\n" + "Let's started!" );
 
+
+//var questions = ["Please, Insert your name to continue: "];
+//var anwwers = [];
+
+var name;
+
+
+let player = new Player ("Player1", 0);
+player._award = 0;
+
+function awardPlayer(player){
+    //player._name = anwwers[i]; 
+    player._award +=1000;
+    console.log(" . You won: " + player._award + " USD.");
+}
+
+function askName (i){
+    process.stdout.write("Please, Insert your name to continue: ");
+}
+
+/*
+    process.stdin.on("data", function(data){
+        //anwwers.push(data.toString().trim());
+        name = data.toString().trim();
+        process.stdout.write(`Welcome ${name}!\n`);
+        
+        //awardPlayer(player);
+        process.exit();
+        
+       // return name;
+    });
+
+*/
+
+//askName(0);
+startGame();
+//awardPlayer(player);
+
+/*
 var readline = require('readline');
 var rl = readline.createInterface(
     process.stdin, process.stdout);
@@ -430,8 +466,29 @@ var rl = readline.createInterface(
         let award = 0;
         let player = new Player(name,award);
         startGame();
-    });
-    
-      
+        function addAward(){
+            player._award += 1000;
+            console.log("Congratulations, you won: " + player._award + "USD");
+        }
+    });      
+*/
 
+//console.log("Do you want to play again?: \n" + "1. Play again\n" + "2. Exit")
+var answer;
+process.stdout.write("Do you want to play again?: \n" + "1. Play again\n" + "2. Exit");
+
+process.stdin.on("data", function(data){
+    answer = data.toString().trim();
+    switch(answer){
+        case 1: 
+        let selectedCards = [];
+        let selectedCardsValue = [];
+        //let sum = 0;
+        startGame();
+        case 2:
+            console.log("Thanks for playing. You won: " + player._award + "USD");
+    }
+    process.exit();
+        
+});
 
