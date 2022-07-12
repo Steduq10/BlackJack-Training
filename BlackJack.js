@@ -296,33 +296,26 @@ let NKd = new Cards("K♦", 10);
 deck.push(NKd._card);
 deckValues.push(NKd._value);
 
-/*
-for (let i=0; i < deckValues.length; i++){
-    console.log(deckValues[i]);
 
-}
-*/
-
-// Selectedcard array
 
 let selectedCards = [];
 let selectedCardsValue = [];
 
-const i_firstCard=Math.floor(Math.random() * deck.length);
-const i_secondCard=Math.floor(Math.random() * deck.length);
+let i_firstCard=Math.floor(Math.random() * deck.length);
+let i_secondCard=Math.floor(Math.random() * deck.length);
 
 function startGame(){
     //TO DO: Add the first 2 cards randomly to the user
     //Math.random() - 0 - cards.length
     
     while(i_firstCard == i_secondCard){
-        const i_secondCard=Math.floor(Math.random() * deck.length);
+        let i_secondCard=Math.floor(Math.random() * deck.length);
     }
-        const firstCard=deck[i_firstCard];
-        const secondCard=deck[i_secondCard];
+        let firstCard=deck[i_firstCard];
+        let secondCard=deck[i_secondCard];
 
-        const firstCardValue = deckValues[i_firstCard];
-        const secondCardValue = deckValues[i_secondCard];
+        let firstCardValue = deckValues[i_firstCard];
+        let secondCardValue = deckValues[i_secondCard];
   
         selectedCards.push(firstCard);
         selectedCards.push(secondCard);
@@ -333,7 +326,7 @@ function startGame(){
         
         console.log("Cards: "+ selectedCards);
         sumCards(selectedCardsValue);
-        //playingGame(sum);
+        
 
         
 
@@ -343,7 +336,7 @@ function startGame(){
   function sumCards(selectedCardsValue){
     let sum = 0;
     for (let i=0; i < selectedCardsValue.length; i++){
-    //console.log(selectedCardsValue[i]);
+    
     sum += selectedCardsValue[i];
     }
     console.log("Sum: " + sum);
@@ -353,10 +346,10 @@ function startGame(){
 
   
   function playingGame(sum){
-    //console.log(sum);
+    
     if(sum<18){
       newCard();
-      //drawCard();
+      
     }
     else if(sum >= 18 && sum <= 21 ){
         console.log("¡BlackJack!");
@@ -374,7 +367,6 @@ function drawCard(){
         switch(answer){
             case "Y" || "y":
                 console.log("Drawing the card...");
-                //newCard(i_firstCard, i_secondCard);
                 newCard();
                 break;
             case "N" || "n":
@@ -390,26 +382,28 @@ function drawCard(){
   
 
     function newCard (){
-        const i_newCard=Math.floor(Math.random() * deck.length);
+        let i_newCard=Math.floor(Math.random() * deck.length);
     while(i_firstCard == i_secondCard || i_newCard == i_secondCard || i_newCard == i_firstCard){
-        const i_newCard=Math.floor(Math.random() * deck.length);
+        let i_newCard=Math.floor(Math.random() * deck.length);
     }
-        const newCard=deck[i_newCard];
+        let newCard=deck[i_newCard];
 
-        const newCardValue = deckValues[i_newCard];
-        
+        let newCardValue = deckValues[i_newCard];
   
         selectedCards.push(newCard);
 
-        if (selectedCardsValue == 11){
-            selectedCardsValue == 1;
+        if (newCardValue == 11){
+            console.log("INSIDE IF");
+            selectedCardsValue.push(1);
+        }else{
+            selectedCardsValue.push(newCardValue);
         }
         
-        selectedCardsValue.push(newCardValue);
+        
             
         console.log("Cards: "+ selectedCards);
         sumCards(selectedCardsValue);
-        //drawCard();
+        
         
     }
 
@@ -425,70 +419,27 @@ console.log("Feeling with luck? - Give it a try~~");
 console.log("Welcome Player1.\n" + "Let's started!" );
 
 
-//var questions = ["Please, Insert your name to continue: "];
-//var anwwers = [];
-
 var name;
 
 
 let player = new Player ("Player1", 0);
 player._award = 0;
 
-function awardPlayer(player){
-    //player._name = anwwers[i]; 
-    player._award +=1000;
-    console.log(" . You won: " + player._award + " USD.");
-}
 
-function askName (i){
-    process.stdout.write("Please, Insert your name to continue: ");
-}
-
-/*
-    process.stdin.on("data", function(data){
-        //anwwers.push(data.toString().trim());
-        name = data.toString().trim();
-        process.stdout.write(`Welcome ${name}!\n`);
-        
-        //awardPlayer(player);
-        process.exit();
-        
-       // return name;
-    });
-
-*/
-
-//askName(0);
 startGame();
-//awardPlayer(player);
 
-/*
-var readline = require('readline');
-var rl = readline.createInterface(
-    process.stdin, process.stdout);
-    rl.question('What is your name? ', (name) => {
-        console.log('Welcome: ' + name);
-        let award = 0;
-        let player = new Player(name,award);
-        startGame();
-        function addAward(){
-            player._award += 1000;
-            console.log("Congratulations, you won: " + player._award + "USD");
-        }
-    });      
-*/
 
-//console.log("Do you want to play again?: \n" + "1. Play again\n" + "2. Exit")
 var answer;
 process.stdout.write("Do you want to play again?: \n" + "1. Play again\n" + "2. Exit");
 
 process.stdin.on("data", function(data){
     answer = data.toString().trim();
     if(answer == 1){
-        
+        i_firstCard=Math.floor(Math.random() * deck.length);
+        i_secondCard=Math.floor(Math.random() * deck.length);
+
         selectedCards.length = 0;
         selectedCardsValue.length = 0;
-        //let sum = 0;
         startGame();
     } else {
         console.log("Thanks for playing. You won: " + player._award + " USD");
