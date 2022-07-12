@@ -339,6 +339,8 @@ function startGame(){
     
     sum += selectedCardsValue[i];
     }
+    console.log(" "); 
+    
     console.log("Sum: " + sum);
     playingGame(sum);
     return sum;
@@ -393,14 +395,14 @@ function drawCard(){
         selectedCards.push(newCard);
 
         if (newCardValue == 11){
-            console.log("INSIDE IF");
+            
             selectedCardsValue.push(1);
         }else{
             selectedCardsValue.push(newCardValue);
         }
         
         
-            
+        console.log(" ");    
         console.log("Cards: "+ selectedCards);
         sumCards(selectedCardsValue);
         
@@ -416,8 +418,10 @@ console.log("               Blackjack                 ");
 console.log("*****************************************");
 console.log("");
 console.log("Feeling with luck? - Give it a try~~");
+console.log("");
+console.log("*****************************************");
 console.log("Welcome Player1.\n" + "Let's started!" );
-
+console.log("*****************************************");
 
 var name;
 
