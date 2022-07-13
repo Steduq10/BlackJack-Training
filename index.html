@@ -9,14 +9,34 @@
         
         <link rel="stylesheet" href="style.css"/>
     </head>
-    <body> 
+    <body onload="showCards()">
+        
+
+        <div class="parent"> 
+            <div class="element"> 
+                <ul id="cards">
+
+                </ul>
+            </div>
+        </div>
+        
+
         <div class="parent">
-            <h2 class="box">NEW GAME</h2>
-            <h2 class="box">DRAW A CARD</h2>
+            <p>
+                WELCOME <br/>
+                Feeling with luck? - Give it a try~~ <br/>
+                Click on NEW GAME to start to play
+            </p>
+            <button class="box" id="newGame"  onclick="newGame()">NEW GAME</button>
+            <br/>
+            <button class="box" id="drawCard"  onclick="drawCard()">DRAW A CARD</button>
+            <br/>
         </div>
             
-
-        
+    
+            <script src="js/Player.js"></script>/>
+            <script src="js/Cards.js"></script>
+            <script src="js/Blackjack.js"></script>    
         
     </body>
 </html>

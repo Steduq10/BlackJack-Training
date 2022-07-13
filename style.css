@@ -3,9 +3,19 @@ body{
     background-color: #212F3C ;
 }
 
-h2{
-    color: #E74C3C;
+p{
+    color: #F4F6F7;
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+ul{
+    color: #F4F6F7;
     
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button{
+    color: #E74C3C;
     text-align: center;
    
 }
@@ -26,8 +36,9 @@ h2{
     background-color: #F4F6F7;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
+    font-size: large;
 }
-
+/*center image and tex*/
 .parent{
     text-align : center;
    }
