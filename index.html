@@ -22,15 +22,29 @@
         
 
         <div class="parent">
-            <p>
+            <p id="message">
                 WELCOME <br/>
                 Feeling with luck? - Give it a try~~ <br/>
                 Click on NEW GAME to start to play
             </p>
+            <!--
+                <button class="box" id="newPlayer"  onclick="showNewMenu()">REGISTER PLAYER</button>
+            <form id ="register">
+                <input type="text" id="name" placeholder="Name"/>
+            </form>
+           
+            -->
+            
             <button class="box" id="newGame"  onclick="newGame()">NEW GAME</button>
             <br/>
             <button class="box" id="drawCard"  onclick="drawCard()">DRAW A CARD</button>
             <br/>
+           
+            
+        </div>
+        
+        <div onload="newGame()">
+
         </div>
             
     

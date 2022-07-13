@@ -240,3 +240,134 @@ function showCards(){
     */
     document.getElementById("cards").innerHTML = deck;
 }
+/*
+function newPlayer(){
+    const form = document.forms["register"];
+    const name = form["name"];
+    let award = 0;
+    const player = new Player(name, award);
+    
+}*/
+
+function newGame(){
+    document.getElementById("message").innerHTML = "Welcome Player1. Let's started!";
+    startGame();
+}
+
+let selectedCards = [];
+let selectedCardsValue = [];
+
+let i_firstCard=Math.floor(Math.random() * deck.length);
+let i_secondCard=Math.floor(Math.random() * deck.length);
+
+
+var name;
+
+
+let player = new Player ("Player1", 0);
+player._award = 0;
+
+
+function startGame(){
+    //TO DO: Add the first 2 cards randomly to the user
+    //Math.random() - 0 - cards.length
+    
+    while(i_firstCard == i_secondCard){
+        let i_secondCard=Math.floor(Math.random() * deck.length);
+    }
+        let firstCard=deck[i_firstCard];
+        let secondCard=deck[i_secondCard];
+
+        let firstCardValue = deckValues[i_firstCard];
+        let secondCardValue = deckValues[i_secondCard];
+  
+        selectedCards.push(firstCard);
+        selectedCards.push(secondCard);
+        selectedCardsValue.push(firstCardValue);
+        selectedCardsValue.push(secondCardValue);
+
+        
+        //let seeCards = "Cards: " + selectedCards;
+        console.log("Cards: "+ selectedCards);
+        sumCards(selectedCardsValue);
+
+        document.getElementById("message").innerHTML = "Cards: "+ selectedCards;
+
+  }
+
+  function sumCards(selectedCardsValue){
+    let sum = 0;
+    for (let i=0; i < selectedCardsValue.length; i++){
+    
+    sum += selectedCardsValue[i];
+    }
+    console.log(" "); 
+    
+    console.log("Sum: " + sum);
+    playingGame(sum);
+    return sum;
+  }
+
+
+  function playingGame(sum){
+    
+    if(sum<18){
+      newCard();
+      
+    }
+    else if(sum >= 18 && sum <= 21 ){
+        console.log("¡BlackJack!");
+        player._award += 1000; 
+        console.log("Congratulations, you won: " + player._award + " USD");
+    }else{
+        console.log("You lose. GAME OVER");
+        console.log("Thanks for playing. You won: " + player._award + " USD");
+    }
+  }
+
+  /*
+  function drawCard(){
+
+    switch(answer){
+        case "Y" || "y":
+            console.log("Drawing the card...");
+            newCard();
+            break;
+        case "N" || "n":
+            console.log("Game over");
+            break;
+            default:
+                console.log("Invalid input. ");
+                break;
+      }
+
+    interfazCaptura.close();
+  }
+*/
+
+function newCard (){
+    let i_newCard=Math.floor(Math.random() * deck.length);
+while(i_firstCard == i_secondCard || i_newCard == i_secondCard || i_newCard == i_firstCard){
+    let i_newCard=Math.floor(Math.random() * deck.length);
+}
+    let newCard=deck[i_newCard];
+
+    let newCardValue = deckValues[i_newCard];
+
+    selectedCards.push(newCard);
+
+    if (newCardValue == 11){
+        
+        selectedCardsValue.push(1);
+    }else{
+        selectedCardsValue.push(newCardValue);
+    }
+    
+    
+    console.log(" ");    
+    console.log("Cards: "+ selectedCards);
+    sumCards(selectedCardsValue);
+    
+    
+}
+
