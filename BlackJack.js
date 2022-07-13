@@ -381,7 +381,7 @@ function drawCard(){
 
         interfazCaptura.close();
       }
-  
+
 
     function newCard (){
         let i_newCard=Math.floor(Math.random() * deck.length);
